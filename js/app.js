@@ -7,12 +7,17 @@ let openCards = [];
 
 totalDeck.forEach(function(card) {
   card.addEventListener('click', function(e) {
-    openCards.push(card);
-      if (openCards.length >= 2) {
-        // hide
-      } else {
-        openCards.push(card);
-        card.classList.add('open', 'show');
+      openCards.push(card);
+      card.classList.add('open', 'show');
+      console.log(openCards.length);
+
+      if (openCards.length == 2) {
+        setTimeout(function() {
+          openCards.forEach(function(card) {
+              card.classList.remove('open', 'show');
+          });
+          openCards = [];
+        }, 850);
       }
   });
 });
