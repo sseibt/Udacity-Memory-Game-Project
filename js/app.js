@@ -11,6 +11,7 @@ totalDeck.forEach(function(card) {
       if (openCards.length >= 2) {
         // hide
       } else {
+        openCards.push(card);
         card.classList.add('open', 'show');
       }
   });
