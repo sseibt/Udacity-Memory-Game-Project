@@ -1,14 +1,21 @@
 /*
- * Create a list that holds all of your cards
+ * Create a list that holds all of your cards and create array to hold count of number of cards open, so it does not exceed 2 at once.
  */
 
 const totalDeck = document.querySelectorAll('.card');
+let openCards = [];
 
 totalDeck.forEach(function(card) {
   card.addEventListener('click', function(e) {
-    card.classList.add('open', 'show');
+    openCards.push(card);
+      if (openCards.length >= 2) {
+        // hide
+      } else {
+        card.classList.add('open', 'show');
+      }
   });
 });
+
 
 /*
  * Display the cards on the page
