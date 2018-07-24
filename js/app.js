@@ -2,6 +2,13 @@
  * Create a list that holds all of your cards
  */
 
+const totalDeck = document.querySelectorAll('.card');
+
+totalDeck.forEach(function(card) {
+  card.addEventListener('click', function(e) {
+    card.classList.add('open', 'show');
+  });
+});
 
 /*
  * Display the cards on the page
