@@ -1,58 +1,45 @@
-/*
- * Create a list that holds all of your cards and create array to hold count of number of cards open, so it does not exceed 2 at once.
- */
+/* Array that holds the cards
+const cardIcon =
+['fa-diamond', 'fa-diamond',
+'fa-paper-plane-o', 'fa-paper-plane-o',
+'fa-bolt', 'fa-bolt',
+'fa-anchor', 'fa-anchor',
+'fa-cube', 'fa-cube',
+'fa-leaf', 'fa-leaf',
+'fa-bomb', 'fa-bomb',
+'fa-bicycle', 'fa-bicycle'];
+*/
 
-const totalDeck = document.querySelectorAll('.card');
+
+//Grabbing cards by CSS class, creating a new array each time after a card is clicked which holds no more than two cards clicked and then resets array to empty again
+const cardDeck = document.querySelectorAll('.card');
 let openCards = [];
 
-totalDeck.forEach(function(card) {
+cardDeck.forEach(function(card) {
   card.addEventListener('click', function(e) {
       openCards.push(card);
       card.classList.add('open', 'show');
-      console.log(openCards.length);
-
-      if (openCards.length == 2) {
-        setTimeout(function() {
-          openCards.forEach(function(card) {
-              card.classList.remove('open', 'show');
-          });
-          openCards = [];
-        }, 850);
-      }
-  });
+    });
 });
+//To start the game, prepare board
 
 
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
 
-// Shuffle function from http://stackoverflow.com/a/2450976
-function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+// Count the moves made to complete Game. After 8 moves, start removing stars.
+
+
+/* Shuffle cards for each new game. Function from http://stackoverflow.com/a/2450976
+function shuffle(cardIcon) {
+    var currentIndex = cardIcon.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
         temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
+        cardIcon[currentIndex] = cardIcon[randomIndex];
+        cardIcon[randomIndex] = temporaryValue;
     }
 
-    return array;
+    return cardIcon;
 }
-
-
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
+*/
